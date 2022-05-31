@@ -1,0 +1,51 @@
+.header--main{
+    width: 100%;
+    height: 200px;
+    background-color: $primary-color;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-top: 20px;
+    text-align: center;
+}
+
+.header--title{
+    font-size: 15px;
+    text-transform: uppercase;
+}
+
+.header--icon{
+    width: 15px;
+}
+
+.header--button-language{
+    width: 70px;
+    margin: 0px auto;
+    border: 0px;
+    outline: 0px;
+    height: 30px;
+}
+
+.header--nav{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.header--nav-group{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin: 1px auto;
+    width: 50%;
+    border-radius: 10px;
+
+    &:hover{
+        background-color: $primary-color-deg;
+        cursor: pointer;
+        color: $background-color;
+    }
+}
