@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Login } from "components/Login";
 import { Register } from "components/Register";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 export const Session = () => {
   const navigate = useNavigate();

@@ -1,6 +1,6 @@
 import { useSession } from "helpers/session/useSession";
 import React from "react";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 export const Main = () => {
   const navigate = useNavigate();
