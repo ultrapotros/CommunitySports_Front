@@ -4,6 +4,10 @@
         "login": "Login",
         "sports": "Sports",
         "centers": "Centers",
-        "events": "Events"
+        "events": "Events",
+        "language": {
+            "spanish": "Spanish",
+            "english": "English"
+        }
     }
 }

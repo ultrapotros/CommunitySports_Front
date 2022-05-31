@@ -4,6 +4,10 @@
         "login": "Entrar",
         "sports": "Deportes",
         "centers": "Centros",
-        "events": "Eventos"
+        "events": "Eventos",
+        "language": {
+            "spanish": "Español",
+            "english": "Ingles"
+        }
     }
 }

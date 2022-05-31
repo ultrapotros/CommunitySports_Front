@@ -4,6 +4,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Session } from "./views/Session";
 import { LandPage } from "./views/LandPage/LandPage";
 import { Error } from "./views/Error";
+
+// Components ________________________________
+import { Header } from "components/Header/Header";
+
 // Context ___________________________________
 import { UserContextProvider } from "./contexts/user";
 
@@ -11,6 +15,7 @@ function App() {
   return (
     <UserContextProvider>
       <BrowserRouter>
+        <Header />
         <main className="app--main">
           <Routes>
             <Route path="/" element={<LandPage />} />
