@@ -1,26 +1,6 @@
-* {
-  margin: 0;
-  padding: 0;
-}
-* + * {
-  margin-top: 1rem;
-}
-:root {
-}
-// React Legacy Styles
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
-#hidden {
-  display: none;
-}
+$background-color: #fff;
+$background-color-deg: #dad6d6;
+$primary-color: rgb(241, 150, 31);
+$primary-color-deg: rgb(234, 185, 99);
+$secondary-color: rgb(41, 205, 26);
+$secondary-color-deg: rgb(129, 225, 137);
