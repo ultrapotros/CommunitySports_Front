@@ -3,17 +3,14 @@ import React, { useState, useEffect } from "react";
 const Context = React.createContext({});
 
 export function UserContextProvider({ children }) {
-
-  const [user, setUser] = useState();
-  const loggedUserJSON = window.sessionStorage.getItem('user');
+  const [user, setUser] = useState(() => window.sessionStorage.getItem("user"));
   const [jwt, setJWT] = useState(() => window.sessionStorage.getItem("jwt"));
-  
-  useEffect(() => {
-    if (loggedUserJSON) {
-        const loggedUser= JSON.parse(loggedUserJSON);
-        setUser(loggedUser);
-    }
 
+  useEffect(() => {
+    if (typeof user === "string") {
+      const parsedUser = JSON.parse(user);
+      setUser(parsedUser);
+    }
   }, [user]);
 
   return (
