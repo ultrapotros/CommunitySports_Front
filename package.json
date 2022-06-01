@@ -3,15 +3,23 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+<<<<<<< HEAD
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@mui/icons-material": "^5.8.2",
     "@mui/material": "^5.8.2",
+=======
+    "@react-google-maps/api": "^2.11.9",
+>>>>>>> 464283d3fdc0bb0585ce3d45085eec6cf0110b00
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.26.1",
+<<<<<<< HEAD
     "i18next": "^21.8.5",
+=======
+    "dotenv": "^16.0.1",
+>>>>>>> 464283d3fdc0bb0585ce3d45085eec6cf0110b00
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-i18next": "^11.16.9",
