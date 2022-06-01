@@ -12,9 +12,9 @@ export const useSession = () => {
       startSession({ username, password }, "login")
         .then(({ token, username, id }) => {
           window.sessionStorage.setItem("jwt", token);
-          window.sessionStorage.setItem("user", `${id}, ${username}`);
+          window.sessionStorage.setItem("user", `{"id":"${id}", "username":"${username}"}`);
           setJWT(token);
-          setUser(`${id}, ${username}`);
+          setUser({id, username});
         })
         .catch((err) => {
           logfail = true;
