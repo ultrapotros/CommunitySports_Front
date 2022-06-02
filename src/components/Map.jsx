@@ -45,6 +45,10 @@ function Map({data,home}) {
     console.log(e)
     console.log(modal)
   }
+  const getCoordenates = (e)=> {
+    console.log({lat:e.latLng.lat(e),lng:e.latLng.lng(e)})
+  }
+
   const onUnmount = useCallback(function callback(map) {
     setMap(null)
   }, [])
@@ -57,6 +61,7 @@ function Map({data,home}) {
         zoom={zoomClick}
         onLoad={onLoad}
         onUnmount={onUnmount}
+        onClick = {getCoordenates}
       >
             { /* Child components, such as markers, info windows, etc. */ }
             {home? <Marker 
