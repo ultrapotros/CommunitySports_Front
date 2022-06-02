@@ -1,8 +1,8 @@
 import Context from "contexts/user";
-import delTemplate from "helpers/delTemplate";
-import getTemplate from "helpers/getTemplate";
-import patchTemplate from "helpers/patchTemplate";
-import postTemplate from "helpers/postTemplate";
+import delTemplate from "helpers/templates/delTemplate";
+import getTemplate from "helpers/templates/getTemplate";
+import patchTemplate from "helpers/templates/patchTemplate";
+import postTemplate from "helpers/templates/postTemplate";
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
