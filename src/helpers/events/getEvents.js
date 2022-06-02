@@ -1,15 +1,21 @@
 import axios from "axios";
 const ENDPOINT = `${process.env.REACT_APP_API_URL}`;
-export default function delTemplate(id, jwt) {
+
+export default function getEvents(params, jwt) {
+  const keys = ["sex"];
+  let queryString = "";
+  keys.forEach((key) => {
+    queryString += `${key}=${params[key]}&`;
+  });
+
   return axios
-    .delete(`${ENDPOINT}/template/delete/${id}`, {
+    .get(`${ENDPOINT}/event/search?${queryString}`, {
       headers: {
-        "auth-token": jwt,
+        authorization: jwt,
       },
     })
     .then((res) => {
       if (!res.data) throw new Error("Response is NOT ok");
-      console.log("TEMPLATE DEL", res.data);
       return res.data;
     })
     .catch(() => {
