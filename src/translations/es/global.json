@@ -9,5 +9,14 @@
             "spanish": "Español",
             "english": "Ingles"
         }
+    },
+    "forms": {
+        "sport": "Deporte",
+        "type": "Tipo",
+        "date": "Fecha",
+        "time": "Hora",
+        "center": "Centro",
+        "movility": "Movilidad",
+        "signEvent": "Inscribirse"
     }
 }

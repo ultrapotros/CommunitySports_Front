@@ -9,5 +9,14 @@
             "spanish": "Spanish",
             "english": "English"
         }
+    },
+    "forms": {
+        "sport": "Sport",
+        "type": "Type",
+        "date": "Date",
+        "time": "Time",
+        "center": "Center",
+        "movility": "Movility",
+        "signEvent": "Sign Event"
     }
 }
