@@ -1,4 +1,12 @@
-.app--main{
+.app--main {
     width: 100%;
     height: 100vh;
+}
+
+.app--group-width {
+    width: 80%;
+    margin: 0 auto;
+    max-width: 1400px;
+    display: inherit;
+    justify-content: inherit;
 }

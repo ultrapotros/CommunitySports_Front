@@ -7,8 +7,7 @@ export const Header = () => {
     const navLinks = [
         { text: t("header.sports") },
         { text: t("header.centers") },
-        { text: t("header.events") },
-        { text: t("header.login") }
+        { text: t("header.events") }
     ]
 
     const changeLanguage = () => {
@@ -19,20 +18,24 @@ export const Header = () => {
 
     return (
         <header className="header--main">
-            <h1 className="header--title">{t("header.title")}</h1>
-            <button className="header--button-language" onClick={() => changeLanguage()}>{t("header.language.english")}</button>
-
-            <nav className="header--nav">
-                {navLinks.map((e, i) => {
-                    return (
-                        <div key={i} className={i === navLinks.length - 1 ? "header--nav-group header--nav-login" : "header--nav-group"}>
-                            <p className="header--nav-link">{e.text}</p>
-                        </div>
-                    )
-                })}
-            </nav>
-
-
+            <div className="app--group-width">
+                <div className="header--display-group header--display-left">
+                    <h1 className="header--title">{t("header.title")}</h1>
+                    <nav className="header--nav">
+                        {navLinks.map((e, i) => {
+                            return (
+                                <div key={i} className={i === navLinks.length - 1 ? "header--nav-group header--nav-login" : "header--nav-group"}>
+                                    <p className="header--nav-link">{e.text}</p>
+                                </div>
+                            )
+                        })}
+                    </nav>
+                </div>
+                <div className="header--display-group header--display-right">
+                    <button className="header--button-language" onClick={() => changeLanguage()}>{t("header.language.english")}</button>
+                    <button className="header--button-login">{t("header.login")}</button>
+                </div>
+            </div>
         </header>
     )
 }

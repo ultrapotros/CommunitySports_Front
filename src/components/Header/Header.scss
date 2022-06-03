@@ -1,18 +1,19 @@
 .header--main {
     width: 100%;
-    height: 100px;
-    background-color: $primary-color;
+    height: 90px;
+    background-color: #fff;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
-    padding-top: 10px;
     text-align: center;
-    animation: 0.2s contradeploy forwards;
+    align-items: center;
 }
 
 .header--title {
     font-size: 15px;
     text-transform: uppercase;
+    color: $primary-color;
+    font-weight: bolder;
 }
 
 .header--icon {
@@ -27,23 +28,41 @@
     height: 30px;
 }
 
+.header--display-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.header--display-left {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.header--display-right {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .header--nav {
     display: flex;
     flex-direction: row;
     gap: 5px;
-    margin-top: 10px;
-    margin-bottom: 5px;
+    color: $primary-color;
 }
 
 .header--nav-group {
     display: flex;
     flex-direction: row;
     text-align: center;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     gap: 5px;
+    width: 70px;
+    height: 20px;
     margin: 1px auto;
-    width: 100px;
     border-radius: 10px;
 
     &:hover {
@@ -51,6 +70,10 @@
         cursor: pointer;
         color: $background-color;
     }
+}
+
+.header--nav-link {
+    font-size: 13px;
 }
 
 .header--button {
