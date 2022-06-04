@@ -1,16 +1,15 @@
 import axios from "axios";
 const ENDPOINT = `${process.env.REACT_APP_API_URL}`;
-
-export default function postTemplate(params, jwt) {
+export default function patchTemplate(params, id, jwt) {
   return axios
-    .post(`${ENDPOINT}/template/add`, params, {
+    .patch(`${ENDPOINT}/template/update/${id}`, params, {
       headers: {
-        "auth-token": jwt,
+        authorization: jwt,
       },
     })
     .then((res) => {
       if (!res.data) throw new Error("Response is NOT ok");
-      console.log("TEMPLATE POST", res.data);
+      console.log("TEMPLATE PATCH", res.data);
       return res.data;
     })
     .catch(() => {

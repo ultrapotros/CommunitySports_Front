@@ -5,6 +5,7 @@ import { Session } from "./views/Session";
 import { LandPage } from "./views/LandPage/LandPage";
 import { Error } from "./views/Error";
 import { Main } from "./views/Main";
+import { Events } from "views/Events";
 
 // Components ________________________________
 import { Header } from "components/Header/Header";
@@ -22,6 +23,7 @@ function App() {
             <Route path="/" element={<LandPage />} />
             <Route path="/login" element={<Session />} />
             <Route path="/main" element={<Main />} />
+            <Route path="/events" element={<Events />} />
             <Route path="/*" element={<Error />} />
           </Routes>
         </main>
