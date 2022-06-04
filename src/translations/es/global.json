@@ -17,6 +17,15 @@
         "time": "Hora",
         "center": "Centro",
         "movility": "Movilidad",
-        "signEvent": "Inscribirse"
+        "signEvent": "Inscribirse",
+        "Centro":"Centro",
+        "Direccion":"Dirección",
+        "Latitud":"Latitud",
+        "Longitud":"Longitud",
+        "Telefono":"Teléfono",
+        "Movilidad":"Movilidad",
+        "Podotactil":"Podotactil",
+        "Ind_magnetica":"Ind-Magnetica",
+        "email":"Email"
     }
 }

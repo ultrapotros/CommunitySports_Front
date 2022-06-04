@@ -1,16 +1,16 @@
-import React, {useState , useCallback} from 'react'
+import React, {useState} from 'react'
 import { GoogleMap, useJsApiLoader , Marker , MarkerClusterer, TransitLayer } from '@react-google-maps/api';
 import house from '../assets/img/home_icon.png'
 import { useTranslation } from "react-i18next"
 
 
 const containerStyle = {
-  width: '400px',
-  height: '400px'
+  width: '100%',
+  height: '100%'
 };
 
 function Map({data,home}) {
-  const [t, i18n] = useTranslation("global");
+  const [t] = useTranslation("global");
 
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
@@ -19,7 +19,7 @@ function Map({data,home}) {
   const [map, setMap] = useState(null)
 
   
-  const [mapCenter, setMapCenter] = useState(home)
+  const [mapCenter, setMapCenter] = useState(home || {lat:data[parseInt(data.length/2)].Longitud,lng:data[parseInt(data.length/2)].Latitud})
   const [zoomClick, setZoomClick] = useState(15)
   const [modalInfo, setModalInfo] = useState()
   const [modal, setModal] = useState(false)
@@ -29,38 +29,26 @@ function Map({data,home}) {
     console.log('open form')
   }
 
-  const onLoad = useCallback(function callback(map) {
-    const bounds = new window.google.maps.LatLngBounds(home || {lat:data[parseInt(data.length/2)].Longitud,lng:data[parseInt(data.length/2)].Latitud} );
-    map.fitBounds(bounds);
-    setMap(map)
-  }, [])
 
   const handleDrag = (e)=> {
-    setMapCenter(e)
+    setMapCenter({lat:e.latLng.lat(e),lng:e.latLng.lng(e)})
   }
 
   const handleMarker = (e)=>{
     setModalInfo(e)
     setModal(true)
-    console.log(e)
-    console.log(modal)
   }
   const getCoordenates = (e)=> {
     console.log({lat:e.latLng.lat(e),lng:e.latLng.lng(e)})
   }
 
-  const onUnmount = useCallback(function callback(map) {
-    setMap(null)
-  }, [])
-
   return isLoaded ? (
-    <main>
+    <main style={{width:"100vw",height:"90vh"}}>
       <GoogleMap
         mapContainerStyle={containerStyle}
-        center={home || {lat:data[parseInt(data.length/2)].Longitud,lng:data[parseInt(data.length/2)].Latitud}}
+        center={mapCenter}
         zoom={zoomClick}
-        onLoad={onLoad}
-        onUnmount={onUnmount}
+        onLoad={map => setMap(map)}
         onClick = {getCoordenates}
       >
             { /* Child components, such as markers, info windows, etc. */ }
@@ -82,16 +70,18 @@ function Map({data,home}) {
         <TransitLayer />
       </GoogleMap>
       {modal && <div className="event-modal" style= {{backgroundColor:"yellow"}}>
-            <ul className="event-modal-list">
-              {modalInfo.sport && <li><div>{t("forms.sport")}</div><div>{modalInfo.sport}</div></li>}
-              {modalInfo.type && <li><div>{t("forms.type")}</div><div>{modalInfo.type}</div></li>}
-              {modalInfo.date && <li><div>{t("forms.date")}</div><div>{modalInfo.date}</div></li>}
-              {modalInfo.time && <li><div>{t("forms.time")}</div><div>{modalInfo.time}</div></li>}
-              {modalInfo.Centro && <li><div>{t("forms.center")}</div><div>{modalInfo.Centro}</div></li>}
-              {modalInfo.Movilidad && <li><div>{t("forms.movility")}</div><div>{modalInfo.Movilidad}</div></li>}
+            <ul className="event-modal-labels">
+                {Object.keys(modalInfo).map((e,index)=>
+                <li className='event-modal-list-labels' id={`label${index}`}>{t(`forms.${e}`)}</li> 
+                )}
+            </ul>
+            <ul className="event-modal-values">
+                {Object.values(modalInfo).map((e,index)=>
+                <li className='event-modal-list-labels' id={`value${index}`}>{e}</li>
+                )}
             </ul>
             <button type="button" onClick={()=>console.log('apuntarse')}>{t("forms.signEvent")}</button>
-            <button type="button" onClick={()=>setModal(false)}>x</button>
+            <button type="button" onClick={()=>setModal(false)}>X</button>
         </div>}
 
       <button type="button" onClick={handleForm}>Create Itinerary</button>
