@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { GoogleMap, useJsApiLoader , Marker , MarkerClusterer, TransitLayer } from '@react-google-maps/api';
-import house from '../assets/img/home_icon.png'
+import house from '../../assets/img/home_icon.png'
 import { useTranslation } from "react-i18next"
 
 
