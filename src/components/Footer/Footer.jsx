@@ -3,11 +3,11 @@ export const Footer = () => {
     return (
         <footer className="footer--main">
             <div className="app--wrapper">
-                <div className="footer--submain">
+                <div className="footer--slot">
                     <div className="footer--links">
                         bucle de links
                     </div>
-                    <div className="footer--final">
+                    <div className="footer--slot">
                         <div className="footer--brand">
                             marca
                         </div>

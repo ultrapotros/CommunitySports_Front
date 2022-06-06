@@ -9,5 +9,10 @@
             "spanish": "Español",
             "english": "Ingles"
         }
+    },
+    "footer": {
+        "who": "Quienes somos",
+        "contact": "Contacto",
+        "ask": "FAQ'S"
     }
 }

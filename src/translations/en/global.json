@@ -8,6 +8,11 @@
         "language": {
             "spanish": "Spanish",
             "english": "English"
+        },
+        "footer": {
+            "who": "About us",
+            "contact": "Contact",
+            "ask": "FAQ'S"
         }
     }
 }
