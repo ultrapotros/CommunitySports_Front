@@ -9,4 +9,8 @@
     max-width: 1400px;
     display: inherit;
     justify-content: inherit;
+
+    @media (max-width: 930px) {
+        width: 90%;
+    }
 }

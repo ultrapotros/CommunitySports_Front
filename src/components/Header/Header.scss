@@ -1,6 +1,6 @@
 .header--main {
     width: 100%;
-    height: 90px;
+    height: 80px;
     margin-bottom: 10px;
     position: fixed;
     background-color: #fff;
@@ -23,6 +23,15 @@
     text-transform: uppercase;
     color: $primary-color;
     font-weight: bolder;
+
+    @media (max-width: 280px) {
+        font-size: 10px;
+
+        &::before {
+            content: " ";
+            white-space: pre;
+        }
+    }
 }
 
 .header--icon {
@@ -56,6 +65,10 @@
     &:hover {
         background-color: #f5f5f5;
     }
+
+    @media (max-width: 830px) {
+        display: none;
+    }
 }
 
 .header--button-login {
@@ -63,9 +76,10 @@
     width: 150px;
     color: $primary-color;
     font-weight: bolder;
-}
 
-.header--text-button {
+    @media (max-width: 830px) {
+        display: none;
+    }
 }
 
 .header--modal-languages {
@@ -88,6 +102,10 @@
         &:hover {
             background-color: #f5f5f5;
         }
+    }
+
+    @media (max-width: 830px) {
+        display: none;
     }
 }
 
@@ -128,13 +146,103 @@
     margin: 1px auto;
     border-radius: 10px;
 
-    &:hover {
-        background-color: $primary-color-deg;
-        cursor: pointer;
-        color: $background-color;
+    @media (max-width: 830px) {
+        display: none;
     }
 }
 
 .header--nav-link {
     font-size: 13px;
+}
+
+.header--button {
+    position: absolute;
+    border: 0px;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+
+    @media (min-width: 830px) {
+        display: none;
+    }
+}
+
+.header--menu-modal {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 150px;
+    padding-top: 40px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    border-radius: 0px 0px 0px 5px;
+    background-color: #fff;
+    box-shadow: 0 4px 12px 0 #65676a1a;
+
+    @media (min-width: 830px) {
+        display: none;
+    }
+
+    @media (max-width: 550px) {
+        width: 100%;
+    }
+}
+
+.header--close {
+    position: absolute;
+    top: 29px;
+    right: 30px;
+}
+
+.header--modal-link {
+    color: $primary-color;
+    text-align: start;
+    margin-top: 20px;
+    cursor: pointer;
+
+    &:hover {
+        text-shadow: 0 0 1px $primary-color;
+    }
+
+    @media (max-width: 550px) {
+        text-align: center;
+    }
+}
+
+.header--modal-login {
+    margin: auto;
+    margin-top: 50px;
+    text-align: center;
+    border: 2px solid $primary-color;
+    border-radius: 5px;
+    width: 100px;
+    color: $primary-color;
+    font-weight: bolder;
+}
+
+.header--language {
+    right: 80px;
+
+    @media (max-width: 400px) {
+        right: 40px;
+    }
+}
+
+.header--modal-responsive {
+    position: absolute;
+    background-color: #fff;
+    padding: 20px;
+    top: 0;
+    right: 0;
+    width: 100%;
+    box-shadow: 0 4px 12px 0 #65676a1a;
+
+    @media (min-width: 830px) {
+        display: none;
+    }
+
+    p {
+        margin-top: 20px;
+        cursor: pointer;
+    }
 }
