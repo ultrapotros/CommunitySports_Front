@@ -40,7 +40,7 @@ export const Header = () => {
 
     return (
         <header className={navbar ? "header--main header--sticky" : "header--main"} ref={header}>
-            <div className="app--group-width">
+            <div className="app--wrapper">
                 <div className="header--display-group header--display-left">
                     <h1 className="header--title">{t("header.title")}</h1>
                     <nav className="header--nav">
