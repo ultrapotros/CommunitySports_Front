@@ -1,7 +1,7 @@
 import { useSession } from "helpers/session/useSession";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Map from '../components/Map'
+import Map from '../components/Map/Map'
 import datas from '../assets/data/centros_deportivos.json'
 
 export const Main = () => {
