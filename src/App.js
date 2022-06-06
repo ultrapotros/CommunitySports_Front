@@ -12,6 +12,7 @@ import { Header } from "components/Header/Header";
 
 // Context ___________________________________
 import { UserContextProvider } from "./contexts/user";
+import { Footer } from "components/Footer/Footer";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route path="/*" element={<Error />} />
           </Routes>
         </main>
+        <Footer />
       </BrowserRouter>
     </UserContextProvider>
   );
