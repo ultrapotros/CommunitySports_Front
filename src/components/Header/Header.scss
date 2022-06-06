@@ -23,6 +23,7 @@
     text-transform: uppercase;
     color: $primary-color;
     font-weight: bolder;
+    cursor: pointer;
 
     @media (max-width: 280px) {
         font-size: 10px;
@@ -154,6 +155,10 @@
 .header--nav-link {
     cursor: pointer;
     font-size: 13px;
+
+    &:hover {
+        text-shadow: 0 0 1px $primary-color;
+    }
 }
 
 .header--button {
