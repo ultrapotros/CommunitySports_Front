@@ -10,6 +10,8 @@
     max-width: 1400px;
     display: inherit;
     justify-content: inherit;
+    flex-direction: inherit;
+    gap: inherit;
 
     @media (max-width: 930px) {
         width: 90%;
