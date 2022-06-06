@@ -4,7 +4,7 @@ import getTemplate from "helpers/getTemplate";
 import patchTemplate from "helpers/patchTemplate";
 import postTemplate from "helpers/postTemplate";
 import React, { useContext } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 export const Template = () => {
   const { jwt } = useContext(Context);
