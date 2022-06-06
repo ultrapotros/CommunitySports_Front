@@ -1,4 +1,4 @@
-import Map from "components/Map";
+import Map from "components/Map/Map";
 import React from "react";
 import datas from '../../assets/data/centros_deportivos.json'
 
