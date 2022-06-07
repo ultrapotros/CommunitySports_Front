@@ -17,10 +17,10 @@ export const SelectCustom = ({ name, control, label, id, defaultValue , options 
         <Controller
             name={name}
             control={control}
-            defaultValue={defaultValue}
+            defaultValue={options[0]}
             render={({ field }) => (
                 <NativeSelect
-                defaultValue={defaultValue}
+                defaultValue={options[0]}
                 inputProps={{
                 name,
                 id
