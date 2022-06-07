@@ -8,8 +8,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import InputCustom from "./forms/InputCustom";
 import { SelectCustom } from "./forms/SelectCustom";
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { DateCustom } from "./forms/DateCustom";
+import InputCustomPassword from "./forms/InputCustomPassword";
 
 const schema = yup.object().shape({
   username:yup
@@ -93,23 +93,19 @@ export const Register = () => {
           id='email-input'
           errors={errorsRegister.email}
         />
-        <InputCustom
+        <InputCustomPassword
           name='password'
           control={controlRegister}
           id='password-input'
           label='password'
-          type='password'
           errors={errorsRegister.password}
-          adornment={<VisibilityOffIcon/>}
         />
-        <InputCustom
+        <InputCustomPassword
           name='passwordConfirmation'
           control={controlRegister}
           id='passwordConfirmation-input'
           label='confirm password'
-          type='password'
           errors={errorsRegister.passwordConfirmation}
-          adornment={<VisibilityOffIcon/>}
         />
         <DateCustom
         name='age'

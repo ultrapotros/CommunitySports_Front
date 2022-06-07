@@ -1,0 +1,36 @@
+{
+    "header": {
+        "title": "Comunidad Deportiva",
+        "login": "Iniciar sesion",
+        "sports": "Deportes",
+        "centers": "Centros",
+        "events": "Eventos",
+        "language": {
+            "spanish": "Español",
+            "english": "Ingles"
+        }
+    },
+    "footer": {
+        "who": "Quienes somos",
+        "contact": "Contacto",
+        "ask": "FAQ'S"
+    },
+    "forms": {
+        "sport": "Deporte",
+        "type": "Tipo",
+        "date": "Fecha",
+        "time": "Hora",
+        "center": "Centro",
+        "movility": "Movilidad",
+        "signEvent": "Inscribirse",
+        "Centro": "Centro",
+        "Direccion": "Dirección",
+        "Latitud": "Latitud",
+        "Longitud": "Longitud",
+        "Telefono": "Teléfono",
+        "Movilidad": "Movilidad",
+        "Podotactil": "Podotactil",
+        "Ind_magnetica": "Ind-Magnetica",
+        "email": "Email"
+    }
+}

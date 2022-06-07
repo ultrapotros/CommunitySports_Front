@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useSession } from "helpers/session/useSession";
 import InputCustom from "./forms/InputCustom";
+import InputCustomPassword from "./forms/InputCustomPassword";
 import { Button } from "@mui/material";
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
@@ -68,14 +69,12 @@ export const Login = () => {
           id='username-input'
           errors={errorsLogin.username}
         />
-        <InputCustom
+        <InputCustomPassword
           name='password'
           control={controlLogin}
           id='password-input'
           label='password'
-          type='password'
           errors={errorsLogin.password}
-          adornment={<VisibilityOffIcon/>}
         />
         <Button variant="contained" type="submit" className="list--buttons">
           Login
