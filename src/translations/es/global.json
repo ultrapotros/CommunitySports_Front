@@ -31,6 +31,8 @@
         "Movilidad": "Movilidad",
         "Podotactil": "Podotactil",
         "Ind_magnetica": "Ind-Magnetica",
-        "email": "Email"
+        "email": "Email",
+        "yes":"Si",
+        "no":"No"
     }
 }
