@@ -8,29 +8,31 @@
         "language": {
             "spanish": "Spanish",
             "english": "English"
-        },
-        "footer": {
-            "who": "About us",
-            "contact": "Contact",
-            "ask": "FAQ'S"
-        },
-        "forms": {
-            "sport": "Sport",
-            "type": "Type",
-            "date": "Date",
-            "time": "Time",
-            "center": "Center",
-            "movility": "Movility",
-            "signEvent": "Sign Event",
-            "Centro": "Center",
-            "Direccion": "Address",
-            "Latitud": "Latitude",
-            "Longitud": "Longitude",
-            "Telefono": "Phone",
-            "Movilidad": "Movility",
-            "Podotactil": "Podotactil",
-            "Ind_magnetica": "Ind-Magnetica",
-            "email": "Email"
         }
+    },
+    "footer": {
+        "who": "About us",
+        "contact": "Contact",
+        "ask": "FAQ'S"
+    },
+    "forms": {
+        "sport": "Sport",
+        "type": "Type",
+        "date": "Date",
+        "time": "Time",
+        "center": "Center",
+        "movility": "Movility",
+        "signEvent": "Sign Event",
+        "Centro": "Center",
+        "Direccion": "Address",
+        "Latitud": "Latitude",
+        "Longitud": "Longitude",
+        "Telefono": "Phone",
+        "Movilidad": "Movility",
+        "Podotactil": "Podotactil",
+        "Ind_magnetica": "Ind-Magnetica",
+        "email": "Email",
+        "yes":"Yes",
+        "no":"No"
     }
 }
