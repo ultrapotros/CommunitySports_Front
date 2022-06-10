@@ -5,7 +5,7 @@ import { Session } from "./views/Session";
 import { LandPage } from "./views/LandPage/LandPage";
 import { Error } from "./views/Error";
 import { Main } from "./views/Main";
-import { Events } from "views/Events";
+import { EventSearch } from "views/EventSearch";
 
 // Components ________________________________
 import { Header } from "components/Header/Header";
@@ -13,6 +13,8 @@ import { Header } from "components/Header/Header";
 // Context ___________________________________
 import { UserContextProvider } from "./contexts/user";
 import { Footer } from "components/Footer/Footer";
+import { EventDetail } from "views/EventDetail";
+import { EventList } from "views/EventList";
 
 function App() {
   return (
@@ -24,7 +26,9 @@ function App() {
             <Route path="/" element={<LandPage />} />
             <Route path="/login" element={<Session />} />
             <Route path="/main" element={<Main />} />
-            <Route path="/events" element={<Events />} />
+            <Route path="/events" element={<EventSearch />} />
+            <Route path="/event/list" element={<EventList />} />
+            <Route path="/event/detail" element={<EventDetail />} />
             <Route path="/*" element={<Error />} />
           </Routes>
         </main>

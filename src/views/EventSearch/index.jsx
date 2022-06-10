@@ -1,3 +1,4 @@
+import Map from "components/Map/Map";
 import getEvents from "helpers/events/getEvents";
 import postEvent from "helpers/events/postEvent";
 import { useSession } from "helpers/session/useSession";
@@ -31,12 +32,12 @@ const eventData = [
   },
 ];
 
-export const Events = () => {
+export const EventSearch = () => {
   const { jwt, user } = useSession();
   const [event, setEvent] = useState({});
   const [showMap, setShowMap] = useState({});
-  const navigate = useNavigate()
-  
+  const navigate = useNavigate();
+
   const handleCreate = async (e) => {
     e.preventDefault();
     setEvent((prevState) => {
@@ -109,7 +110,7 @@ export const Events = () => {
         <button onClick={handleCreate}>Create</button>
       </form>
       <button onClick={() => navigate("/")}>back</button>
-      {/* <Map props={eventMap}/> */}
+      <Map data={eventData} />
     </>
   );
 };
