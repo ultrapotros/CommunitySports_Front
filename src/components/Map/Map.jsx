@@ -1,8 +1,10 @@
 import React, {useState} from 'react'
+import { useNavigate } from "react-router-dom";
 import { GoogleMap, useJsApiLoader , Marker , MarkerClusterer, TransitLayer } from '@react-google-maps/api';
 import house from '../../assets/img/home_icon.png';
 import pin from '../../assets/img/chinche.png'
 import { useTranslation } from "react-i18next"
+import axios from 'axios'
 
 
 const containerStyle = {
@@ -10,9 +12,10 @@ const containerStyle = {
   height: '100%'
 };
 
-function Map({data,homes}) {
+function Map({data,homes,fiter}) {
+  console.log(data)
   const [t] = useTranslation("global");
-
+  const navigate = useNavigate();
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: process.env.REACT_APP_MY_API_KEY
@@ -24,9 +27,13 @@ function Map({data,homes}) {
   const [modal, setModal] = useState(false)
  
   
-  const onLoad = ()=> {
+  const onLoad = async ()=> {
+   /*  const aaa = await axios.post(`https://www.googleapis.com/geolocation/v1/geolocate?${process.env.REACT_APP_MY_API_KEY}`) */
+   /*  const aaa = await axios.post(`https://www.googleapis.com/geolocation/v1/geolocate?key=${process.env.REACT_APP_MY_API_KEY}`)
+    console.log(aaa) */
     function success(pos) {
       var crd = pos.coords;
+      
 
       setMapCenter({lat:crd.latitude,lng:crd.longitude});
     };
@@ -63,7 +70,7 @@ function Map({data,homes}) {
   }
 
   return isLoaded ? (
-    <main style={{width:"100vw",height:"90vh"}}>
+    <main className ="map--container"/* style={{width:"100vw",height:"90vh"}} */>
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={mapCenter}
@@ -84,7 +91,7 @@ function Map({data,homes}) {
           <MarkerClusterer averageCenter= {true}>
           {(clusterer)=> data.map((e,index)=> 
           <Marker id={index} key={index}
-            position={{lat:e.Longitud, lng:e.Latitud}}
+            position={{lat:e.latitude, lng:e.longitude}}
             clusterer={clusterer}
             onClick={()=>handleMarker(e)}
             onMouseDown={getInfo}
@@ -105,7 +112,8 @@ function Map({data,homes}) {
                 <span className='event--modal-list-values' key={`value${index}`}>{e}</span>
                 )}
           </div>
-          <button type="button" onClick={()=>console.log('apuntarse')}>{t("forms.signEvent")}</button>
+          <button type="button" onClick={(e)=> navigate(`/events/detail/${modalInfo.id}`)}>+ info</button>
+          {/* <button type="button" onClick={()=>console.log('apuntarse')}>{t("forms.signEvent")}</button> */}
         </div>}
 
       <button type="button" onClick={handleForm}>Create Itinerary</button>
