@@ -4,11 +4,12 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 
-export const DateCustom = ({name, control, label, id,placeholder, errors}) => {
+export const DateCustom = ({name, control, label, id,placeholder, defaultValue, errors}) => {
     return (<>
         <Controller
         name={name}
         control={control}
+        defaultValue={defaultValue}
         render={({ field }) => (
             <DatePicker
             {...field}
