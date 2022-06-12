@@ -1,3 +1,4 @@
+import Map from "components/Map/Map";
 import getEvents from "helpers/events/getEvents";
 import postEvent from "helpers/events/postEvent";
 import { useSession } from "helpers/session/useSession";
@@ -34,7 +35,7 @@ const eventData = [
 export const Events = () => {
   const { jwt, user } = useSession();
   const [event, setEvent] = useState({});
-  const [showMap, setShowMap] = useState({});
+  const [showMap, setShowMap] = useState(false);
   const navigate = useNavigate();
 
   const handleCreate = async (e) => {
@@ -45,8 +46,9 @@ export const Events = () => {
       return data;
     });
     // validate all values
-
+    // This should be handled by map before selecting coordinates
     await postEvent(event, jwt);
+    showMap(true);
   };
 
   const handleSearch = async (e) => {
@@ -66,50 +68,52 @@ export const Events = () => {
 
   return (
     <>
-      <form onSubmit={(e) => e.preventDefault()}>
-        <input
-          type="text"
-          placeholder="sexo"
-          value={event.sex}
-          onChange={(e) => handleStateChange(e, "sex")}
-        />
-        {/* Dynamic optained from back ID */}
-        <input
-          type="text"
-          placeholder="deporte"
-          value={event.sex}
-          onChange={(e) => handleStateChange(e, "sportid")}
-        />
-        {/* ============================= */}
-        <input
-          type="text"
-          placeholder="accesibilidad"
-          value={event.sex}
-          onChange={(e) => handleStateChange(e, "accessibility")}
-        />
-        <input
-          type="text"
-          placeholder="nivel"
-          value={event.sex}
-          onChange={(e) => handleStateChange(e, "level")}
-        />
-        <input
-          type="text"
-          placeholder="disponibilidad"
-          value={event.sex}
-          onChange={(e) => handleStateChange(e, "date")}
-        />
-        <input
-          type="text"
-          placeholder="coste"
-          value={event.sex}
-          onChange={(e) => handleStateChange(e, "cost")}
-        />
-        <button onClick={handleSearch}>Search</button>
-        <button onClick={handleCreate}>Create</button>
-      </form>
-      <button onClick={() => navigate("/")}>back</button>
-      {/* <Map props={eventMap}/> */}
+      {showMap ? (
+        <form onSubmit={(e) => e.preventDefault()}>
+          <input
+            type="text"
+            placeholder="sexo"
+            value={event.sex}
+            onChange={(e) => handleStateChange(e, "sex")}
+          />
+          {/* Dynamic optained from back ID */}
+          <input
+            type="text"
+            placeholder="deporte"
+            value={event.sex}
+            onChange={(e) => handleStateChange(e, "sportid")}
+          />
+          {/* ============================= */}
+          <input
+            type="text"
+            placeholder="accesibilidad"
+            value={event.sex}
+            onChange={(e) => handleStateChange(e, "accessibility")}
+          />
+          <input
+            type="text"
+            placeholder="nivel"
+            value={event.sex}
+            onChange={(e) => handleStateChange(e, "level")}
+          />
+          <input
+            type="text"
+            placeholder="disponibilidad"
+            value={event.sex}
+            onChange={(e) => handleStateChange(e, "date")}
+          />
+          <input
+            type="text"
+            placeholder="coste"
+            value={event.sex}
+            onChange={(e) => handleStateChange(e, "cost")}
+          />
+          <button onClick={handleSearch}>Search</button>
+          <button onClick={handleCreate}>Create</button>
+        </form>
+      ) : (
+        <Map data={eventData} />
+      )}
     </>
   );
 };
