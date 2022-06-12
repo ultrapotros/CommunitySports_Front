@@ -47,7 +47,9 @@
         "maleTeam":"Men",
         "femaleTeam":"Women",
         "mixTeam":"Mixed",
-        "sex":"Sex"
+        "sex":"Sex",
+        "search":"Search",
+        "back":"Back"
     }
 }
 
