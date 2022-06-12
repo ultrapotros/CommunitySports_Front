@@ -7,10 +7,11 @@ import { LandPage } from "./views/LandPage/LandPage";
 import { Error } from "./views/Error";
 import { Main } from "./views/Main";
 import { Events } from "views/Events";
+import { FilterEvents } from "views/FilterEvents";
+import { FilterCenters } from "views/FilterCenters";
 
 // Components ________________________________
 import { Header } from "components/Header/Header";
-
 // Context ___________________________________
 import { UserContextProvider } from "./contexts/user";
 import { Footer } from "components/Footer/Footer";
@@ -33,6 +34,8 @@ function App() {
             <Route path="/events/center/:id" element={<Events />} />
             <Route path="/events/user/:id" element={<Events />} />
             <Route path="/events/detail/:id" element={<EventDetail />} />
+            <Route path="/filterevents" element={<FilterEvents />} />
+            <Route path="/filtercenters" element={<FilterCenters />} />
             <Route path="/*" element={<Error />} />
           </Routes>
         </main>
