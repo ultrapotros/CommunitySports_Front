@@ -28,11 +28,7 @@ export const FilterEvents = () => {
 
   
   /* console.log(events.data) */
-  const currentDate = Date.now();
-  const today = new Date(currentDate);
-  console.log(today);
   const { jwt, user } = useSession();
-  const [event, setEvent] = useState({});
   const [showMap, setShowMap] = useState(false);
   const [eventsFiltered, setEventsFiltered] = useState();
   const [eventsData, setEventsData] = useState();
@@ -40,15 +36,19 @@ export const FilterEvents = () => {
   const [t] = useTranslation("global");
 
   const getData = async () => {
-    console.log('en getData')
     const data = await getAllEvents();
     let auxArray = [];
     data.forEach(e =>{
-        let {id,accessibility, activity, author, capacity, direction, email, hour, ind_magnetica, latitude, longitude, level, mobility, name, organizer, podotactile, sex, time} = {...e}
-        auxArray.push({id:id,accessibility:accessibility,activity:activity,author:author,capacity:capacity,direction:direction,email:email,hour:hour,ind_magnetica:ind_magnetica,latitude:latitude,longitude:longitude,level:level,mobility:mobility,name:name,organizer:organizer,podotactile:podotactile,sex:sex,time:time})
+        let {id,accessibility, activity, author, capacity, direction, email, hour, 
+          ind_magnetica, latitude, longitude, level, mobility, name, organizer, podotactile, sex, time} = {...e}
+
+        auxArray.push({id:id,accessibility:accessibility,activity:activity,author:author,capacity:capacity,
+          direction:direction,email:email,hour:hour,ind_magnetica:ind_magnetica,latitude:latitude,longitude:longitude,
+          level:level,mobility:mobility,name:name,organizer:organizer,podotactile:podotactile,sex:sex,time:time})
     })
     setEventsFiltered(auxArray)
     setEventsData(auxArray)
+    setShowMap(true)
   }
   const {
     control: controlFilter,
@@ -59,18 +59,14 @@ export const FilterEvents = () => {
   });
 
   const onSubmit = (data) => {
-    let {email} = {...eventsData[0]}
-    console.log(email)
 
     let datafiltered = eventsData.filter(e=>
       (e.sex.substring(0,2).toLowerCase() === data.sex.substring(0,2).toLowerCase() || data.sex === "") && 
       (e.mobility === 1 || data.movility === 'No') && 
       (e.podotactile === 1  || data.podotactil === 'No') && 
       (e.ind_magnetica === 1  || data.ind_magnetic === 'No') &&
-      (data.date === ""? null: data.date.toLocaleDateString() === new Date(e.time).toLocaleDateString())
+      (data.date === undefined || data.date.toLocaleDateString() === new Date(e.time).toLocaleDateString())
     )
-
-    console.log(datafiltered)
     setEventsFiltered(datafiltered)
     setShowMap(true)
   }
@@ -79,7 +75,6 @@ export const FilterEvents = () => {
     getData()
   }, []);
 
-console.log(eventsFiltered)
   return (
     <>
       <form className="login-form session-form" onSubmit={handleSubmit(onSubmit)}>
@@ -116,16 +111,16 @@ console.log(eventsFiltered)
           label={t("forms.date")}
           errors={errorsFilter.date}
           control={controlFilter}
-          defaultValue={today}
+          /* defaultValue={today} */
           placeholder={t("forms.date")}
           id='date-input'
         />
-        <button type="submit" /* onClick={handleSearch} */>Search</button>
-        {/* <button onClick={handleCreate}>Create</button> */}
-      <button onClick={() => getData()/* navigate("/") */}>back</button>
+        <div className="form-buttons">
+          <button type="submit">{t("forms.search")}</button>
+          <button onClick={() => navigate("/")}>{t("forms.back")}</button>
+        </div>
       </form>
-      <div className="map-filtered"><Map data={eventsFiltered}/></div> 
-      {/* {showMap && <div className="map-filtered"><Map data={eventsFiltered}/></div> } */}
+      {showMap && <div className="map-filtered"><Map data={eventsFiltered}/></div> }
     </>
   );
 };
