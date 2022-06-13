@@ -3,21 +3,13 @@ import { useSession } from "helpers/session/useSession";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export const EventList = ({ eventData }) => {
+export const EventList = ({ eventsArray }) => {
   const navigate = useNavigate();
-  const [events, setEvents] = useState(eventData);
+  const [events, setEvents] = useState(eventsArray);
 
-  const { user, jwt } = useSession();
-
-  useEffect(() => {
-    async function fetchUserEvents() {
-      if (user.id) {
-        // const data = await getUserEvents(user.id, jwt);
-        // setEvents(data);
-      }
-    }
-    fetchUserEvents();
-  }, [user]);
+  // INSCRIPCIÓN -> ERROR
+  // ABANDONAR
+  // ESTILO
 
   return (
     <div>

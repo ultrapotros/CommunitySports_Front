@@ -17,9 +17,6 @@ import { UserContextProvider } from "./contexts/user";
 import { Footer } from "components/Footer/Footer";
 import { EventDetail } from "views/EventDetail";
 
-// Paths______________________________________
-const eventPath = [""];
-
 function App() {
   return (
     <UserContextProvider>
@@ -30,10 +27,9 @@ function App() {
             <Route path="/" element={<LandPage />} />
             <Route path="/login" element={<Session />} />
             <Route path="/main" element={<Main />} />
-            <Route path="/events" element={<Events />} />
             <Route path="/events/center/:id" element={<Events />} />
             <Route path="/events/user/:id" element={<Events />} />
-            <Route path="/events/detail/:id" element={<EventDetail />} />
+            <Route path="/events/detail" element={<EventDetail />} />
             <Route path="/filterevents" element={<FilterEvents />} />
             <Route path="/filtercenters" element={<FilterCenters />} />
             <Route path="/*" element={<Error />} />
