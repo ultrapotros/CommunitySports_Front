@@ -34,7 +34,7 @@
         "direction": "Address",
         "latitude": "Latitude",
         "longitude": "Longitude",
-        "Telefono": "Phone",
+        "phone": "Phone",
         "mobility": "Movility",
         "podotactile": "Podotactil",
         "ind_magnetica": "Magnetic-Ind",

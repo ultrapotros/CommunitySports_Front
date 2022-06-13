@@ -88,21 +88,21 @@ export const FilterEvents = () => {
         <SelectCustom
           name='movility'
           control={controlFilter}
-          label={t("forms.Movilidad")}
+          label={t("forms.mobility")}
           id='movility-input'
           options={[t("forms.no"),t("forms.yes")]}
         />
         <SelectCustom
           name='podotactil'
           control={controlFilter}
-          label={t("forms.Podotactil")}
+          label={t("forms.podotactile")}
           id='podotactil-input'
           options={[t("forms.no"),t("forms.yes")]}
         />
         <SelectCustom
           name='ind_magnetic'
           control={controlFilter}
-          label={t("forms.Ind_magnetica")}
+          label={t("forms.ind_magnetica")}
           id='ind_magnetic-input'
           options={[t("forms.no"),t("forms.yes")]}
           />
