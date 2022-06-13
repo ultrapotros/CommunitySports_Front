@@ -37,7 +37,7 @@
         "direction": "Dirección",
         "latitude": "Latitud",
         "longitude": "Longitud",
-        "Telefono": "Teléfono",
+        "phone": "Teléfono",
         "mobility": "Movilidad",
         "podotactile": "Podotactil",
         "ind_magnetica": "Ind-Magnetica",
