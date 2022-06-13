@@ -115,8 +115,6 @@ function Map({data,homes,fiter}) {
           <button type="button" onClick={(e)=> navigate(`/events/detail/${modalInfo.id}`)}>+ info</button>
           {/* <button type="button" onClick={()=>console.log('apuntarse')}>{t("forms.signEvent")}</button> */}
         </div>}
-
-      <button type="button" onClick={handleForm}>Create Itinerary</button>
     </main>
   ) : <h1>Charging...</h1>
 }

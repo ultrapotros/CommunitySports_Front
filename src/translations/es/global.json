@@ -50,6 +50,8 @@
         "maleTeam":"Masculino",
         "femaleTeam":"Femenino",
         "mixTeam":"Mixto",
-        "sex":"Sexo"
+        "sex":"Sexo",
+        "search":"Buscar",
+        "back":"Atrás"
     }
 }
