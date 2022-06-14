@@ -30,6 +30,7 @@ function App() {
             <Route path="/events/center/:id" element={<Events />} />
             <Route path="/events/user/:id" element={<Events />} />
             <Route path="/events/detail" element={<EventDetail />} />
+            <Route path="/events/detail/:id" element={<EventDetail />} />
             <Route path="/filterevents" element={<FilterEvents />} />
             <Route path="/filtercenters" element={<FilterCenters />} />
             <Route path="/*" element={<Error />} />

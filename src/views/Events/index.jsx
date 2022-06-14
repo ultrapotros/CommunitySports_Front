@@ -49,6 +49,7 @@ export const Events = () => {
       } else if (source.includes("/center")) {
         const id = source.split("/center/");
         const data = await getCenterEvents(id, jwt);
+        console.log(data);
         setEvents(data);
       }
     };
@@ -58,7 +59,7 @@ export const Events = () => {
   return (
     <>
       <EventList eventsArray={events} />
-      <Map data={events} />
+      {/* <Map data={events} /> */}
     </>
   );
 };
