@@ -13,6 +13,9 @@ export const FilterCenter = () => {
                     BUTON2
                 </div>
             </div>
+            <div className="filter_center--control-slider">
+                ------------------☺-----------------
+            </div>
         </section>
     )
 }
