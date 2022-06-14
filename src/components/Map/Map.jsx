@@ -24,6 +24,7 @@ function Map({data,homes,fiter}) {
   const [mapCenter, setMapCenter] = useState({lat: 40.417163732639686, lng: -3.705418109893799})
   const [zoomClick, setZoomClick] = useState(15)
   const [modalInfo, setModalInfo] = useState()
+  const [markerId, setMarkerId] = useState()
   const [modal, setModal] = useState(false)
  
   
@@ -60,7 +61,8 @@ function Map({data,homes,fiter}) {
   }
 
   const handleMarker = (e)=>{
-    console.log(e)
+    setMarkerId(e.id)
+    delete e.id;
     setModalInfo(e)
     setModal(true)
   }
@@ -112,8 +114,8 @@ function Map({data,homes,fiter}) {
                 <span className='event--modal-list-values' key={`value${index}`}>{e}</span>
                 )}
           </div>
-          <button type="button" onClick={(e)=> navigate(`/events/detail/${modalInfo.id}`)}>+ info</button>
-          {/* <button type="button" onClick={()=>console.log('apuntarse')}>{t("forms.signEvent")}</button> */}
+          {modalInfo.capacity? <button type="button" onClick={(e)=> navigate(`/events/detail/${markerId}`)}>+ info</button>:
+          <button type="button" onClick={(e)=> navigate(`/centers/detail/${markerId}`)}>+ info</button>}
         </div>}
     </main>
   ) : <h1>Charging...</h1>
