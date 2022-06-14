@@ -3,7 +3,7 @@ const ENDPOINT = `${process.env.REACT_APP_API_URL}`;
 
 export default function getCenterEvents(id, jwt) {
   return axios
-    .get(`${ENDPOINT}/event/center/${id}}`, {
+    .get(`${ENDPOINT}/event/center/${id}`, {
       headers: {
         authorization: jwt,
       },

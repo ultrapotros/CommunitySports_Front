@@ -35,12 +35,13 @@ export const EventDetail = () => {
       await delUserEvent({ id_user: user.id, id_event: event.id }, jwt);
     }
   };
-  // (|||)INSCRIPCIÓN -> ERROR axios.post({id_user, id_event})
-  // Solo mostrar eventos que:
-  //----participants < capacity COUNT(users_events) -> insertar en users_events
-  //----users_events.id_user = user.id -> abandonar
-  // (|||)ABANDONAR
+
   // ESTILO
 
-  return <div>{event?.id}</div>;
+  return (
+    <div>
+      {/* check for inscribed user   //----users_events.id_user = user.id -> abandonar */}
+      {event?.id}
+    </div>
+  );
 };

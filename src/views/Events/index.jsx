@@ -7,33 +7,6 @@ import { useNavigate } from "react-router-dom";
 import getCenterEvents from "helpers/events/getCenterEvents";
 import getUserEvents from "helpers/events/getUserEvents";
 
-const eventData = [
-  {
-    id: "1",
-    sportid: "11111",
-    author: "111",
-    accessibility: 2,
-    date: new Date(),
-    sex: "f",
-    level: 5,
-    placeid: "1111111111111",
-    latitud: -3.7086993281311904,
-    longitud: 40.47876758357458,
-  },
-  {
-    id: "2",
-    sportid: "22222",
-    author: "222",
-    accessibility: 3,
-    date: new Date(),
-    sex: "a",
-    level: 2,
-    placeid: "22222222222",
-    latitud: -3.6737317205040503,
-    longitud: 40.42810291538114,
-  },
-];
-
 export const Events = () => {
   const { jwt, user } = useSession();
   const [events, setEvents] = useState([]);
@@ -42,12 +15,12 @@ export const Events = () => {
   useEffect(() => {
     const source = window.location.href.split("/events")[1];
     const fetchData = async () => {
-      if (source.includes("/user")) {
-        const id = source.split("/user/");
-        const data = await getUserEvents(id, jwt);
+      if (source.includes("/user") && user?.id) {
+        const data = await getUserEvents(user.id, jwt);
         setEvents(data);
       } else if (source.includes("/center")) {
-        const id = source.split("/center/");
+        const id = source.split("/center/")[1];
+        console.log("CENRTERS", id);
         const data = await getCenterEvents(id, jwt);
         console.log(data);
         setEvents(data);
