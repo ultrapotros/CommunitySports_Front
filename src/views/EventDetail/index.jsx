@@ -25,6 +25,13 @@ export const EventDetail = () => {
   }, [user]);
 
   const handleInscription = async () => {
+    await postUserEvent(
+      {
+        id_user: "0006f578-eddb-457b-bcda-c8e9f5146ccf",
+        id_event: "08486b2a-bf12-4c48-9989-3fdd52739c4e",
+      },
+      jwt
+    );
     if (event && user) {
       await postUserEvent({ id_user: user.id, id_event: event.id }, jwt);
     }
@@ -42,6 +49,7 @@ export const EventDetail = () => {
     <div>
       {/* check for inscribed user   //----users_events.id_user = user.id -> abandonar */}
       {event?.id}
+      <button onClick={handleInscription}>Inscribir</button>
     </div>
   );
 };

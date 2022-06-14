@@ -4,32 +4,36 @@ import { useSession } from "helpers/session/useSession";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export const EventList = ({ eventsArray }) => {
+export const EventList = ({ events }) => {
   const navigate = useNavigate();
   const { user, jwt } = useSession();
-  const [events, setEvents] = useState(eventsArray);
 
   const handleInscription = async (event) => {
-    if (event && user) {
+    if (event && user?.id) {
       await postUserEvent({ id_user: user.id, id_event: event.id }, jwt);
     }
   };
 
   const handleLeave = async (event) => {
-    if (event && user) {
+    if (event && user?.id) {
       await delUserEvent({ id_user: user.id, id_event: event.id }, jwt);
     }
   };
-  // ESTILO
+
+  console.log("Events", events);
 
   return (
     <div>
       <h1>HELLO</h1>
       {events.map((event) => (
-        <button onClick={() => navigate("/event/detail", { state: event })}>
-          {/* check for inscribed user   //----users_events.id_user = user.id -> abandonar */}
-          Go to event {event.id}
-        </button>
+        <>
+          <button onClick={() => navigate("/event/detail", { state: event })}>
+            {event.users && event.users.some((userId) => userId === user?.id)
+              ? "Abandonar "
+              : "Inscribirme "}
+            Go to event {event.id}
+          </button>
+        </>
       ))}
     </div>
   );
