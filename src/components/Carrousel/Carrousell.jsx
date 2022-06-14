@@ -38,7 +38,7 @@ export const Carrousell = () => {
                     dynamicBullets: true,
                 }}
                 autoplay={{
-                    delay: 10000
+                    delay: 5000
                 }}
             >
                 {staticContent.map((e, i) => <SwiperSlide className="swiper-slider" key={i}>
