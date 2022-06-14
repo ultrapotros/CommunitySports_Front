@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 // Views _____________________________________
 import { Session } from "./views/Session";
 import { LandPage } from "./views/LandPage/LandPage";
@@ -14,6 +15,7 @@ import { Header } from "components/Header/Header";
 // Context ___________________________________
 import { UserContextProvider } from "./contexts/user";
 import { Footer } from "components/Footer/Footer";
+import { EventDetail } from "views/EventDetail";
 
 function App() {
   return (
@@ -25,7 +27,10 @@ function App() {
             <Route path="/" element={<LandPage />} />
             <Route path="/login" element={<Session />} />
             <Route path="/main" element={<Main />} />
-            <Route path="/events" element={<Events />} />
+            <Route path="/events/user" element={<Events />} />
+            <Route path="/events/center/:id" element={<Events />} />
+            <Route path="/events/detail" element={<EventDetail />} />
+            <Route path="/events/detail/:id" element={<EventDetail />} />
             <Route path="/filterevents" element={<FilterEvents />} />
             <Route path="/filtercenters" element={<FilterCenters />} />
             <Route path="/*" element={<Error />} />
