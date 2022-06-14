@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next"
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -14,9 +15,9 @@ export const Header = () => {
     const [viewOptions, setViewOptions] = useState(false)
 
     const navLinks = [
-        { text: t("header.sports") },
-        { text: t("header.centers") },
-        { text: t("header.events") }
+        { text: t("header.sports"), route: '/sports' },
+        { text: t("header.centers"), route: '/centers' },
+        { text: t("header.events"), route: '/events' }
     ]
 
     const allLanguages = [
@@ -42,12 +43,12 @@ export const Header = () => {
         <header className={navbar ? "header--main header--sticky" : "header--main"} ref={header}>
             <div className="app--wrapper">
                 <div className="header--display-group header--display-left">
-                    <h1 className="header--title">{t("header.title")}</h1>
+                    <Link to={'/'} className="header--title">{t("header.title")}</Link>
                     <nav className="header--nav">
                         {navLinks.map((e, i) => {
                             return (
                                 <div key={i} className={i === navLinks.length - 1 ? "header--nav-group header--nav-login" : "header--nav-group"}>
-                                    <p className="header--nav-link">{e.text}</p>
+                                    <Link to={e.route} className="header--nav-link">{e.text}</Link>
                                 </div>
                             )
                         })}
@@ -75,7 +76,7 @@ export const Header = () => {
                     {viewOptions ?
                         <section className="header--menu-modal">
                             {navLinks.map((e, i) => {
-                                return <p className="header--nav-link header--modal-link" key={i}>{e.text}</p>
+                                return <Link to={e.route} className="header--nav-link header--modal-link" key={i}>{e.text}</Link>
                             })}
                             <p className="header--modal-login" >{t("header.login")}</p>
                             <button className="header--button header--close" onClick={() => setViewOptions(!viewOptions)} >
