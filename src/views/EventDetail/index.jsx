@@ -18,7 +18,7 @@ export const EventDetail = () => {
         if (!idEvent) return;
         console.log("event", idEvent);
         const data = await getEvent(idEvent, jwt);
-        console.log(data.id);
+        console.log("DATA", data);
         setEvent(data.event);
       }
     }
@@ -40,7 +40,8 @@ export const EventDetail = () => {
   };
 
   const handleInscription = async () => {
-    if (event && user?.id) {
+    console.log(event.id, "EVENTID");
+    if (event?.id && user?.id) {
       await postUserEvent({ id_user: user.id, id_event: event.id }, jwt);
     }
   };
@@ -56,21 +57,24 @@ export const EventDetail = () => {
   return (
     <>
       {event?.id ? (
-        <div>
-          <p>
+        <div className="event-info">
+          <p className="event-detail">
             {event.capacity}
             {event.direction}​ {event.email} ​ {event.hour} ​{event.id_center}
             {event.id_event} ​ {event.id_sport} {event.ind_magnetica}
             {event.latitude}
             {event.longitude} ​{event.mobility} {event.name} ​ {event.organizer}
-            {event.podotactile} ​ {event.sex} {event.time} ​ {event.users}
+            {event.podotactile} ​ {event.sex} {event.time}
+            {event.users ? event.users.length : "0"}
           </p>
-          <button onClick={() => handleClick()}>
-            {inscribed ? "Abandonar " : "Inscribirme "}
-          </button>
+          {user?.id && (
+            <button onClick={() => handleClick()}>
+              {inscribed ? "Abandonar " : "Inscribirme "}
+            </button>
+          )}
         </div>
       ) : (
-        <h1>no hay evevntos disponibles</h1>
+        <h1>No hay evevntos disponibles</h1>
       )}
     </>
   );

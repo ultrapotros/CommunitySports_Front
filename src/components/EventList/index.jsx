@@ -37,7 +37,7 @@ export const EventList = ({ event }) => {
   return (
     <>
       {event?.id ? (
-        <div>
+        <div className="event-info">
           <p
             className="link"
             onClick={() => navigate("/events/detail", { state: event })}
@@ -46,12 +46,14 @@ export const EventList = ({ event }) => {
             {event.direction}​ {event.email} ​ {event.hour} ​{event.id_center}
             {event.id_event} ​ {event.id_sport} {event.ind_magnetica}
             {event.latitude}
-            {event.longitude} ​{event.mobility} {event.name} ​ {event.organizer}
+            {event.longitude} ​{event.mobility} {event.name} {event.organizer}
             {event.podotactile} ​ {event.sex} {event.time} ​ {event.users}
           </p>
-          <button onClick={() => handleClick(event)}>
-            {inscribed ? "Abandonar " : "Inscribirme "}
-          </button>
+          {user?.id && (
+            <button onClick={() => handleClick()}>
+              {inscribed ? "Abandonar " : "Inscribirme "}
+            </button>
+          )}
         </div>
       ) : (
         <h1>no hay evevntos disponibles</h1>
