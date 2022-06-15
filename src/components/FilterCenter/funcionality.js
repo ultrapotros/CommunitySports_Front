@@ -1,5 +1,7 @@
 export const distanceToPoint = (latitudeYourPoint, longitudeYourPoint, otherLatitude, otherLongitude) => {
-    rad = function (x) { return x * Math.PI / 180; }
+    const rad = (x) => {
+        return x * Math.PI / 180;
+    }
     const R = 6378.137; //Radio de la tierra en km
     const dLat = rad(otherLatitude - latitudeYourPoint);
     const dLong = rad(otherLongitude - longitudeYourPoint);
