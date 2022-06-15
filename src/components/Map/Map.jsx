@@ -13,7 +13,6 @@ const containerStyle = {
 };
 
 function Map({ data, homes, filter, setMyPosition }) {
-  console.log(data)
   const [t] = useTranslation("global");
   const navigate = useNavigate();
   const { isLoaded } = useJsApiLoader({
