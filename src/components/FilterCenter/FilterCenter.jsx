@@ -61,8 +61,7 @@ export const FilterCenter = ({ search }) => {
             }
         }
 
-        const myCentersByDistance = myCenters.filter(e => e.distanceToPoint < distance)
-        setDataFiltered(myCentersByDistance)
+        setDataFiltered(myCenters)
     }
 
     return (
