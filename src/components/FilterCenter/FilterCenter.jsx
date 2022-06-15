@@ -1,21 +1,83 @@
-export const FilterCenter = () => {
+import { LateralButtons } from "./internalComponents/LateralButtons"
+import { MultiRangeSlider } from "./internalComponents/MultiRangeSlider"
+import { NavSports } from "./internalComponents/NavSports"
+import { useEffect, useState } from "react"
+import Map from "components/Map/Map"
+import getCentersWithSports from "helpers/centers/getCentersWithSports"
+import { distanceToPoint } from "./funcionality"
+
+export const FilterCenter = ({ search }) => {
+    //Params
+    const [distance, setDistance] = useState(100); //nº entero 0-100
+    const [adapt, setAdapt] = useState([]); //arr de Strings
+    const [sports, setSports] = useState([]); //arr de Strings
+    const [myPosition, setMyPosition] = useState({ lat: 0, long: 0 })
+    //Data
+    const [data, setData] = useState(null);
+    const [dataFiltered, setDataFiltered] = useState(null);
+
+    useEffect(() => {
+        getData()
+    }, [])
+
+    useEffect(() => {
+        if (data !== null) {
+            filters();
+        }
+    }, [distance, adapt, sports, myPosition])
+
+    const getData = async () => {
+        if (search === 'center') {
+            const myData = await getCentersWithSports()
+            setData(myData)
+            setDataFiltered([])
+        } else {
+            const myData = await getCentersWithSports()
+            setData(myData)
+            setDataFiltered([])
+        }
+    }
+
+    const filters = () => {
+        const myCenters = []
+        for (const center of data) {
+            let comp = false
+            for (const sport of sports) {
+                console.log({ sport });
+                if (center.sports.indexOf(sport, 0) > -1) {
+                    comp = true
+                }
+            }
+            for (const discapacitie of adapt) {
+                console.log({ discapacitie });
+                if (center[discapacitie] > -1) {
+                    comp = true
+                }
+            }
+
+            if (comp) {
+                center.distanceToPoint = distanceToPoint(myPosition.lat, myPosition.long, center.latitude, center.longitude)
+                myCenters.push(center)
+            }
+        }
+
+        const myCentersByDistance = myCenters.filter(e => e.distanceToPoint < distance)
+        setDataFiltered(myCentersByDistance)
+    }
+
     return (
         <section className="filter_center--exterior-main">
-            <div className="filter_center--control-links">
-                link1 - link2 - link3
-            </div>
+            <NavSports sports={sports} setSports={setSports} />
             <div className="filter_center--body">
                 <div className="filter_center--body-map">
-                    MAPA
+                    {data !== null ? <Map data={dataFiltered} setMyPosition={setMyPosition} /> : null}
                 </div>
-                <div className="filter_center--control-buttons">
-                    BUTON1
-                    BUTON2
-                </div>
+                <LateralButtons adapt={adapt} setAdapt={setAdapt} />
             </div>
-            <div className="filter_center--control-slider">
-                ------------------☺-----------------
+            <div className="filter_center--slider">
+                <MultiRangeSlider value={distance} setValue={setDistance} />
             </div>
+
         </section>
     )
 }
