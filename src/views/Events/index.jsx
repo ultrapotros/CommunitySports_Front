@@ -17,12 +17,13 @@ export const Events = () => {
     const fetchData = async () => {
       if (source.includes("/user") && user?.id) {
         const data = await getUserEvents(user.id, jwt);
+        // console.log(data.events);
         setEvents(data.events);
       } else if (source.includes("/center")) {
         const id = source.split("/center/")[1];
         console.log("CENRTERS", id);
         const data = await getCenterEvents(id, jwt);
-        console.log(data.events);
+        // console.log(data.events);
         setEvents(data.events);
       }
     };
@@ -31,7 +32,9 @@ export const Events = () => {
 
   return (
     <>
-      <EventList events={events} />
+      {events.map((event, i) => (
+        <EventList key={`event-${i}`} event={event} />
+      ))}
       {/* <Map data={events} /> */}
     </>
   );
