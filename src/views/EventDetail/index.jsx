@@ -3,10 +3,12 @@ import getEvent from "helpers/events/getEvent";
 import postUserEvent from "helpers/events/postUserEvent";
 import { useSession } from "helpers/session/useSession";
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const EventDetail = () => {
   const { user, jwt } = useSession();
+  const navigate = useNavigate();
+  const [inscribed, setInscribed] = useState(false);
   const [event, setEvent] = useState(useLocation().state);
 
   useEffect(() => {
@@ -24,32 +26,52 @@ export const EventDetail = () => {
     fetchdata();
   }, [user]);
 
+  useEffect(() => {
+    if (event) {
+      setInscribed(
+        event.users && event.users.some((userId) => userId === user?.id)
+      );
+    }
+  }, [user]);
+
+  const handleClick = () => {
+    inscribed ? handleLeave() : handleInscription();
+    setInscribed(!inscribed);
+  };
+
   const handleInscription = async () => {
-    await postUserEvent(
-      {
-        id_user: "0006f578-eddb-457b-bcda-c8e9f5146ccf",
-        id_event: "08486b2a-bf12-4c48-9989-3fdd52739c4e",
-      },
-      jwt
-    );
-    if (event && user) {
+    if (event && user?.id) {
       await postUserEvent({ id_user: user.id, id_event: event.id }, jwt);
     }
   };
 
   const handleLeave = async () => {
-    if (event && user) {
+    if (event && user?.id) {
       await delUserEvent({ id_user: user.id, id_event: event.id }, jwt);
     }
   };
 
-  // ESTILO
+  console.log(event);
 
   return (
-    <div>
-      {/* check for inscribed user   //----users_events.id_user = user.id -> abandonar */}
-      {event?.id}
-      <button onClick={handleInscription}>Inscribir</button>
-    </div>
+    <>
+      {event?.id ? (
+        <div>
+          <p>
+            {event.capacity}
+            {event.direction}​ {event.email} ​ {event.hour} ​{event.id_center}
+            {event.id_event} ​ {event.id_sport} {event.ind_magnetica}
+            {event.latitude}
+            {event.longitude} ​{event.mobility} {event.name} ​ {event.organizer}
+            {event.podotactile} ​ {event.sex} {event.time} ​ {event.users}
+          </p>
+          <button onClick={() => handleClick()}>
+            {inscribed ? "Abandonar " : "Inscribirme "}
+          </button>
+        </div>
+      ) : (
+        <h1>no hay evevntos disponibles</h1>
+      )}
+    </>
   );
 };
