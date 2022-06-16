@@ -2,13 +2,14 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+<<<<<<< HEAD:src/assets/scss/session.scss
+  gap: 10px;
+=======
   width: 50%;
+>>>>>>> fd5b5f1756072a40fdd20702b25d027fb1ccae7e:src/components/SessionModal/session.scss
 }
-.session-form > input {
-  margin-bottom: 1rem;
+// error message on dateCustom to be determined
+/* .date-error-message{
+  color: red;
 }
-.session-btn {
-  margin-top: 1rem;
-  width: 6rem;
-  margin-left: calc(50% - 3rem);
-}
+ */

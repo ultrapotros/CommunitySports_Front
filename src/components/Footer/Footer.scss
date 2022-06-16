@@ -1,0 +1,33 @@
+.footer--main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom: 20px;
+    padding-top: 50px;
+}
+
+.footer--slot {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer--brand {
+    font-weight: bolder;
+}
+
+.footer--link {
+    color: $secondary-color;
+    font-weight: bolder;
+}
+
+.footer--social {
+    display: flex;
+    flex-direction: row;
+}
+
+.footer--icon {
+    color: $primary-color;
+}
