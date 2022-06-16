@@ -59,13 +59,31 @@ export const EventDetail = () => {
       {event?.id ? (
         <div className="event-info">
           <p className="event-detail">
-            {event.capacity}
-            {event.direction}​ {event.email} ​ {event.hour} ​{event.id_center}
-            {event.id_event} ​ {event.id_sport} {event.ind_magnetica}
-            {event.latitude}
-            {event.longitude} ​{event.mobility} {event.name} ​ {event.organizer}
-            {event.podotactile} ​ {event.sex} {event.time}
-            {event.users ? event.users.length : "0"}
+            <span className="event-propertie__name">{event.name}</span>
+            <span className="event-propertie__time">{event.time}</span>
+            <span className="event-propertie__direction">
+              {event.direction}
+            </span>
+            <span className="event-propertie__email">{event.email} </span>
+            <span className="event-propertie__hour">{event.hour}</span>
+            <span className="event-propertie__organizer">
+              {event.organizer}
+            </span>
+            <span className="event-propertie__sex">{event.sex}</span>
+            <span className="event-propertie__mobility">
+              ​{event.mobility} ​{" "}
+            </span>
+            <span className="event-propertie__magnetic">
+              {event.ind_magnetica}
+            </span>
+            <span className="event-propertie__podotactile">
+              {event.podotactile} ​{" "}
+            </span>
+            <span className="event-propertie__capacity">{event.capacity}</span>
+            <span className="event-propertie__users">
+              {event.users ? event.users.length : "0"}
+            </span>
+            {/* ​​ ​{event.id_center} {event.id_event} ​ {event.id_sport} {event.longitude} {event.latitude} */}
           </p>
           {user?.id && (
             <button onClick={() => handleClick()}>
