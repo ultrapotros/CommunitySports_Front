@@ -1,8 +1,8 @@
-export const ItemEvent = () => {
+export const ItemEvent = ({ event }) => {
 
     return (
         <section className="item_sports--event-main">
-            <p>HOLO</p><p>HOLO</p><p>HOLO</p>
+            <p className="item_sports--event-subtitle">{`Evento - ${event.name}`}</p>
         </section>
     )
 }

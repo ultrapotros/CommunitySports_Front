@@ -22,10 +22,12 @@ export const Sports = () => {
     return (
         <section className="sports--main">
 
-            {sports !== null ?
+            {sports !== null && event !== null ?
                 sports.map((e, i) => {
+                    const eventsWithSport = event.filter(thisEvent => thisEvent.id_sport === e.id)
+
                     return (
-                        <ItemSports sport={e} index={i} events={event} />
+                        <ItemSports sport={e} index={i} events={eventsWithSport} />
                     )
                 })
                 : null}
