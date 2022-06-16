@@ -6,18 +6,20 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import LanguageIcon from "@mui/icons-material/Language";
+import { useSession } from "helpers/session/useSession";
 
 export const Header = () => {
   const header = useRef(null);
+  const { user } = useSession();
   const [t, i18n] = useTranslation("global");
   const [navbar, setnavbar] = useState(false);
   const [viewLanguages, setViewLanguages] = useState(false);
   const [viewOptions, setViewOptions] = useState(false);
 
   const navLinks = [
-    { text: t("header.sports"), route: "/sports" },
-    { text: t("header.centers"), route: "/filtercenters" },
-    { text: t("header.events"), route: "/filterevents" },
+    { user: user?.id, text: "Myevents", route: "/events/user" },
+    { user: true, text: t("header.centers"), route: "/filtercenters" },
+    { user: true, text: t("header.events"), route: "/filterevents" },
   ];
 
   const allLanguages = [
@@ -60,9 +62,11 @@ export const Header = () => {
                       : "header--nav-group"
                   }
                 >
-                  <Link to={e.route} className="header--nav-link">
-                    {e.text}
-                  </Link>
+                  {e.user && (
+                    <Link to={e.route} className="header--nav-link">
+                      {e.text}
+                    </Link>
+                  )}
                 </div>
               );
             })}
