@@ -1,0 +1,72 @@
+.item_sports--main-item {
+    background-color: $primary-color;
+    box-shadow: -3px 5px 5px $primary-color-deg;
+    color: #fff;
+    width: 50%;
+    margin-bottom: 20px;
+    border-radius: 0px 20px 20px 0px;
+    padding-left: 3%;
+}
+
+.item_sports--item-title {
+    margin-top: 20px;
+    text-transform: uppercase;
+}
+
+.item_sports--slot-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.item_sports--button-deploy {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    margin-top: 14px;
+    margin-right: 20px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.item_sports--event-main {
+    position: relative;
+    top: 0px;
+    right: 20px;
+    width: 100%;
+    height: auto;
+    background-color: red;
+}
+
+@keyframes toRight {
+    0% {
+        transform: translateX(-1600px);
+    }
+    50% {
+        transform: translateX(-1600px);
+    }
+    80% {
+        transform: translateX(50px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+$j: 0.1;
+$o: 1;
+@for $i from 0 to 20 {
+    $time: $o;
+
+    .item_sports--item-#{$i} {
+        animation: toRight #{$time}s;
+    }
+
+    $o: $o + 0.1;
+}
+
+@media (max-width: 540px) {
+    .item_sports--main-item {
+        width: 90%;
+    }
+}
